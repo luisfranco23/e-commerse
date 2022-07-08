@@ -9,3 +9,8 @@
     flex-wrap: wrap;
     justify-content: center;
 }
+@media screen and (min-width: 375px) {
+    .puchase-card {
+        width: 100%;
+    }
+}

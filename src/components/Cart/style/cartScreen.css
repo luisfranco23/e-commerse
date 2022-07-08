@@ -10,3 +10,9 @@
     gap: 20px;
     margin: 20px;
 }
+@media screen and (min-width: 375px) {
+    .cart {
+        width: 100%;
+        margin:20px auto;
+    }
+}

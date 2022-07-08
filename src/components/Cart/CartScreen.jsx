@@ -37,7 +37,7 @@ const CartScreen = () => {
         }
       </div>
       <h2>Total to pay: ${totalPay} </h2>
-      <button className='filter-form__btn' onClick={postPurchase}>
+      <button className='filter-form__btn cart' onClick={postPurchase}>
         <h2>Confirm Purchases</h2>
       </button>
     </div>

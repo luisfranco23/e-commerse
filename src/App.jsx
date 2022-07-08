@@ -10,11 +10,30 @@ import FooterScrem from './components/Shared/FooterScrem'
 import ProductScreen from './components/Products/ProductScreen'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
+import axios from 'axios'
 import { getAllProducts } from './store/slices/products.slice'
 
 function App() {
 
   const dispatch = useDispatch()
+
+  // useEffect(() => {
+
+  //   const URL = 'https://ecommerce-api-react.herokuapp.com/api/v1/users'
+
+  //   const newUser = {
+  //     firstName: "luis",
+  //     lastName: "franco",
+  //     email: "luis890@gmail.com",
+  //     password: "pass123",
+  //     phone: "1234567891",
+  //     role: "admin"
+  //   }
+
+  //   axios.post(URL, newUser)
+  //     .then(res => console.log(res.data))
+  //     .catch(err => console.log(err.data))
+  // },[])
 
   useEffect(() => {
     dispatch(getAllProducts())

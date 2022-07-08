@@ -161,3 +161,8 @@
 .home-body {
     display: flex;
 }
+@media screen and (max-width:375px) {
+    .filter-home {
+        display: none;
+    }
+}

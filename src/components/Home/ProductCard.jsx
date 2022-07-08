@@ -1,5 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import getConfig from '../../utils/getConfig.js'
 
 const ProductCard = ({product}) => {
 
@@ -7,7 +9,19 @@ const ProductCard = ({product}) => {
     const navigate = useNavigate()
 
     const goToProductId = () => {
-        navigate(`product/${product?.id}`)
+        navigate(`/product/${product?.id}`)
+    }
+
+    const addCartProductId = () =>{
+
+        const URL = 'https://ecommerce-api-react.herokuapp.com/api/v1/cart'
+        const objProductId = {
+            "id": product.id,
+            "quantity": 1
+        }
+        axios.post(URL,objProductId, getConfig())
+            .then(res => console.log(res.data))
+            .catch(err => console.log(err.data))
     }
 
   return (
@@ -24,7 +38,7 @@ const ProductCard = ({product}) => {
                 <h3 className='card-product__price-label'>Price</h3>
                 <p className='card-product__price-number'>$ {product?.price} </p>
             </div>
-            <button className='card-product__btn'>
+            <button onClick={addCartProductId} className='card-product__btn'>
                 <i className='bx bx-cart-add'></i>
             </button>
         </div>

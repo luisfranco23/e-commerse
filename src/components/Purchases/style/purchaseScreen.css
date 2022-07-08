@@ -1,0 +1,11 @@
+.puchase-card {
+    border: 1px solid var(--border-color);
+    margin: 20px;
+    padding: 20px;
+    width: 40%;
+}
+.purchases__container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}

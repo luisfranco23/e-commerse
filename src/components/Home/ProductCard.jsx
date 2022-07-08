@@ -1,7 +1,9 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import { useDispatch } from  'react-redux'
 import getConfig from '../../utils/getConfig.js'
+import { getAllProductCart } from '../../store/slices/cart.slice.js'
 
 const ProductCard = ({product}) => {
 
@@ -12,15 +14,20 @@ const ProductCard = ({product}) => {
         navigate(`/product/${product?.id}`)
     }
 
-    const addCartProductId = () =>{
+    const dispatch = useDispatch()
 
+    const addCartProductId = e =>{
+        e.stopPropagation()
         const URL = 'https://ecommerce-api-react.herokuapp.com/api/v1/cart'
         const objProductId = {
             "id": product.id,
             "quantity": 1
         }
         axios.post(URL,objProductId, getConfig())
-            .then(res => console.log(res.data))
+            .then(res => {
+                console.log(res.data)
+                dispatch(getAllProductCart())
+            })
             .catch(err => console.log(err.data))
     }
 

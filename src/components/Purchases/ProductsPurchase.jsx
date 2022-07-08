@@ -2,11 +2,10 @@ import React from 'react'
 
 const ProductsPurchase = ({product}) => {
 
-    console.log(product)
   return (
-    <article>
+    <article className='product-purchase'>
         <h4>{product.title}</h4>
-        <p>{product.productsInCart.quantity} </p>
+        <p>Quantity: {product.productsInCart.quantity} </p>
         <p>$ {product.price} </p>
     </article>
   )

@@ -75,7 +75,7 @@ const Form = () => {
         isErrorLogin && <div className="login-err">Invalid credentials, try again...</div>
       }
       <button className="filter-form__btn logged">Login</button>
-      <p className="login-p">Don't have an account? <span onClick={createAccount}> Sing up</span></p>
+      <p className="login-p">Don't have an account? <span onClick={createAccount}> Check in</span></p>
     </form>
   );
 };

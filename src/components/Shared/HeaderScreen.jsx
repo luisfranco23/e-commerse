@@ -31,7 +31,7 @@ const HeaderScreen = () => {
           <li className="navbar__items">
             <NavLink to="/purchases" onClick={clickMenuHan} className={({isActive}) => isActive ? 'navbar__link navbar__link-active' : 'navbar__link'}>
             <i className='bx bxs-store-alt'></i>
-            <p className="navbar__text">Pucharses</p>
+            <p className="navbar__text">Purchases</p>
             </NavLink>
           </li>
           <li className="navbar__items">

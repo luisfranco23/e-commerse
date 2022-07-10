@@ -14,7 +14,7 @@ const HomeScreen = () => {
     <div className='home'>
       <InputSearch setSearchSubmit={setSearchSubmit}/>
       <div className="home-body">
-        <FilterHome />
+        <FilterHome setSearchSubmit={setSearchSubmit} />
         <div className="products-container">
           {
             searchSubmit ?

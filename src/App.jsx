@@ -8,33 +8,34 @@ import PurchasesScreen from './components/Purchases/PurchasesScreen'
 import HeaderScreen from './components/Shared/HeaderScreen'
 import FooterScrem from './components/Shared/FooterScrem'
 import ProductScreen from './components/Products/ProductScreen'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import axios from 'axios'
 import { getAllProducts } from './store/slices/products.slice'
 import FormSingUp from './components/Login/FormSingUp'
+import { useNavigate } from 'react-router-dom'
 
 function App() {
 
   const dispatch = useDispatch()
+  const [newUser, setNewUser] = useState('')
+  const navigate = useNavigate()
+  const [isCreateUser, setIsCreateUser] = useState(false)
 
-  // useEffect(() => {
+  useEffect(() => {
 
-  //   const URL = 'https://ecommerce-api-react.herokuapp.com/api/v1/users'
+    const URL = 'https://ecommerce-api-react.herokuapp.com/api/v1/users'
 
-  //   const newUser = {
-  //     firstName: "luis",
-  //     lastName: "s",
-  //     email: "luis890@gmail.com",
-  //     password: "pass123",
-  //     phone: "1234567891",
-  //     role: "admin"
-  //   }
-
-  //   axios.post(URL, newUser)
-  //     .then(res => console.log(res.data))
-  //     .catch(err => console.log(err.data))
-  // },[])
+    axios.post(URL, newUser)
+      .then(res => console.log(res.data))
+      .catch(err => console.log(err.data))
+      .finally(() => {
+        setIsCreateUser(true)
+        setTimeout(() => {
+            setIsCreateUser(false)
+        }, 5000);
+      })
+  },[newUser])
 
   useEffect(() => {
     dispatch(getAllProducts())
@@ -53,7 +54,7 @@ function App() {
             <Route path='/purchases' element={<PurchasesScreen />} />
           </Route>
           <Route path='/product/:id' element={<ProductScreen />} />
-          <Route path='/createAccount' element={<FormSingUp />} />
+          <Route path='/createAccount' element={<FormSingUp setNewUser={setNewUser} isCreateUser={isCreateUser} />} />
         </Routes>
       </main>
       <FooterScrem />

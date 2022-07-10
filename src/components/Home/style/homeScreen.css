@@ -161,6 +161,9 @@
 .home-body {
     display: flex;
 }
+.card-product__option {
+    cursor: pointer;
+}
 @media screen and (max-width:375px) {
     .filter-home {
         display: none;

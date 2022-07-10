@@ -3,26 +3,34 @@ import axios from 'axios'
 import getConfig from '../../utils/getConfig'
 import { useDispatch } from  'react-redux'
 import { getAllProductCart } from '../../store/slices/cart.slice.js'
+import { useNavigate } from 'react-router-dom'
 
 const ProductInfoId = ({product}) => {
 
     const [count, setCount] = useState(1)
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const addToCart = () => {
-        const URL = 'https://ecommerce-api-react.herokuapp.com/api/v1/cart'
-
-        const addProduct = {
-            id: product.id,
-            quantity: count
+        const logged = localStorage.getItem('token')
+        console.log(logged)
+        if (logged) {
+            const URL = 'https://ecommerce-api-react.herokuapp.com/api/v1/cart'
+    
+            const addProduct = {
+                id: product.id,
+                quantity: count
+            }
+    
+            axios.post(URL,addProduct,getConfig())
+                .then(res => {
+                    console.log(res.data)
+                    dispatch(getAllProductCart())
+                })  
+                .catch(err => console.log(err.data))      
+        }else {
+            navigate('/login')
         }
-
-        axios.post(URL,addProduct,getConfig())
-            .then(res => {
-                console.log(res.data)
-                dispatch(getAllProductCart())
-            })  
-            .catch(err => console.log(err.data))      
     }
 
     const minusOne = () =>{

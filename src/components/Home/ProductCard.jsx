@@ -18,17 +18,22 @@ const ProductCard = ({product}) => {
 
     const addCartProductId = e =>{
         e.stopPropagation()
-        const URL = 'https://ecommerce-api-react.herokuapp.com/api/v1/cart'
-        const objProductId = {
-            "id": product.id,
-            "quantity": 1
+        const logged = localStorage.getItem('token')
+        if (logged) {
+            const URL = 'https://ecommerce-api-react.herokuapp.com/api/v1/cart'
+            const objProductId = {
+                "id": product.id,
+                "quantity": 1
+            }
+            axios.post(URL,objProductId, getConfig())
+                .then(res => {
+                    console.log(res.data)
+                    dispatch(getAllProductCart())
+                })
+                .catch(err => console.log(err.data))
+        }else {
+            navigate('/login')
         }
-        axios.post(URL,objProductId, getConfig())
-            .then(res => {
-                console.log(res.data)
-                dispatch(getAllProductCart())
-            })
-            .catch(err => console.log(err.data))
     }
 
   return (

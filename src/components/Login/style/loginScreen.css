@@ -60,6 +60,7 @@
 .login-p > span {
     color: rgb(1, 137, 221);
     margin-left: 5px;
+    cursor: pointer;
 }
 
 .login-err {
@@ -86,6 +87,7 @@
     margin: 40px 0;
     padding: 40px;
     border: 1px solid var(--border-color);
+    position: relative;
 }
 .sing-form__title {
     margin-bottom: 20px;
@@ -119,4 +121,8 @@
     background-color: rgb(74, 189, 59);
     padding: 20px;
     color: white;
+    position: absolute;
+    width: 80%;
+    bottom: 50%;
+    left: 10%;
 }

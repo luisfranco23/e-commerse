@@ -2,12 +2,14 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import getConfig from '../../utils/getConfig'
+import { useSelector } from 'react-redux'
 
-const FilterHome = () => {
+const FilterHome = ({setSearchSubmit}) => {
 
    const {handleSubmit,reset,register} = useForm()
 
    const [category, setCategory] = useState()
+   const products = useSelector( state => state.products)
 
    useEffect(() => {
     const URL = 'https://ecommerce-api-react.herokuapp.com/api/v1/products/categories'
@@ -22,6 +24,12 @@ const FilterHome = () => {
         form: '',
         to: ''  
     })
+   }
+
+   const filterCategory = e => {
+    let value = (e.target.value)
+    let filter = products.filter(e => e.category.name.includes(value))
+    setSearchSubmit(filter)
    }
 
   return (
@@ -42,7 +50,7 @@ const FilterHome = () => {
         <h2 className='card-product__title filter__title'>Category</h2>
             {
                 category?.map(e => (
-                    <option key={e.id} value={e?.name}>{e?.name}</option>
+                    <option className='card-product__option' onClick={filterCategory} key={e.id} value={e?.name}>{e?.name}</option>
                 ))
             }
         </div>

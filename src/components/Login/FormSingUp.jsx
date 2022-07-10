@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useForm } from 'react-hook-form'
-import axios from 'axios'
 
-const FormSingUp = () => {
+const FormSingUp = ({setNewUser,isCreateUser}) => {
 
     const {handleSubmit, reset, register} = useForm()
-    const [newUser, setNewUser] = useState()
-    const [isCreateUser, setIsCreateUser] = useState(false)
 
     const objDefault = {
       firstName: "",
@@ -19,23 +16,13 @@ const FormSingUp = () => {
 
     const submit = data => {
         setNewUser(data)
-        const URL = 'https://ecommerce-api-react.herokuapp.com/api/v1/users'
-        axios.post(URL, newUser)
-            .then(res => {
-                console.log(res.data)
-                setIsCreateUser(true)
-                setTimeout(() => {
-                    setIsCreateUser(false)
-                }, 1000);
-            })
-            .catch(err => console.log(err.data))
         reset(objDefault)
     }
 
   return (
     <div className='sing-form'>
         <form className='sing-form__container' onSubmit={handleSubmit(submit)}>
-        <h2 className='sing-form__title'>Create Account</h2>
+            <h2 className='sing-form__title'>Create Account</h2>
             <div className='sing-form__info'>
                 <label htmlFor="firstName" className='sing-form__label'>First Name </label>
                 <input type="text" id='firstName' placeholder=' ' className='sing-form__input' {...register('firstName')} />

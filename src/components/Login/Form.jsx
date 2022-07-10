@@ -23,7 +23,7 @@ const Form = () => {
         setIsErrorLogin(true);
         setTimeout(() => {
             setIsErrorLogin(false);
-        }, 5000);
+        }, 2000);
         });
         reset({
             email: '',
@@ -31,13 +31,17 @@ const Form = () => {
         })
     };
 
+    const createAccount = () => {
+      navigate('/createAccount')
+    }
+
   return (
     <form onSubmit={handleSubmit(submit)} className="login__form">
       <ul className="login__test">
         <li className="flex-login">
           <b className="login-b">Email: </b>mason@gmail.com
         </li>
-        <li>
+        <li className="flex-login">
           <b className="login-b">Password: </b>mason1234
         </li>
       </ul>
@@ -67,10 +71,11 @@ const Form = () => {
             placeholder="Password"
           />
         </li>
-      </ul>
-      <div>{isErrorLogin && "Invalid credentials, try again..."}</div>
+      </ul>{
+        isErrorLogin && <div className="login-err">Invalid credentials, try again...</div>
+      }
       <button className="filter-form__btn logged">Login</button>
-      <p className="login-p">Don't have an account? <span> Sing up</span></p>
+      <p className="login-p">Don't have an account? <span onClick={createAccount}> Sing up</span></p>
     </form>
   );
 };

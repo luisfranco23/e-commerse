@@ -12,6 +12,7 @@ import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import axios from 'axios'
 import { getAllProducts } from './store/slices/products.slice'
+import FormSingUp from './components/Login/FormSingUp'
 
 function App() {
 
@@ -23,7 +24,7 @@ function App() {
 
   //   const newUser = {
   //     firstName: "luis",
-  //     lastName: "franco",
+  //     lastName: "s",
   //     email: "luis890@gmail.com",
   //     password: "pass123",
   //     phone: "1234567891",
@@ -52,6 +53,7 @@ function App() {
             <Route path='/purchases' element={<PurchasesScreen />} />
           </Route>
           <Route path='/product/:id' element={<ProductScreen />} />
+          <Route path='/createAccount' element={<FormSingUp />} />
         </Routes>
       </main>
       <FooterScrem />

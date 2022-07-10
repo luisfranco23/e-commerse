@@ -10,9 +10,6 @@ const HomeScreen = () => {
   const products = useSelector( state => state.products)
   const [searchSubmit, setSearchSubmit] = useState()
 
-  console.log(searchSubmit)
-
-
   return (
     <div className='home'>
       <InputSearch setSearchSubmit={setSearchSubmit}/>

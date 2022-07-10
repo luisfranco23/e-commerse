@@ -164,8 +164,13 @@
 .card-product__option {
     cursor: pointer;
 }
-@media screen and (max-width:375px) {
+@media screen and (max-width:414px) {
     .filter-home {
+        display: none;
+    }
+}
+@media screen and (max-width: 775px) {
+    .filter-form {
         display: none;
     }
 }

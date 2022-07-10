@@ -23,6 +23,11 @@ const FormSingUp = ({setNewUser,isCreateUser}) => {
     <div className='sing-form'>
         <form className='sing-form__container' onSubmit={handleSubmit(submit)}>
             <h2 className='sing-form__title'>Create Account</h2>
+            <p className='sing-form__title recomen'><span>Recommendations: </span> <br />
+            -The telephone number must have exactly 10 digits.<br />
+            -In role you can add client <br />
+            -Password must be alphanumeric
+            </p>
             <div className='sing-form__info'>
                 <label htmlFor="firstName" className='sing-form__label'>First Name </label>
                 <input type="text" id='firstName' placeholder=' ' className='sing-form__input' {...register('firstName')} />

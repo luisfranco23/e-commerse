@@ -35,7 +35,7 @@ const FilterHome = ({setSearchSubmit}) => {
   return (
     <div className='filter-home'>
         <form className='filter-form' onSubmit={handleSubmit(submit)} >
-        <h2 className="card-product__title filter__title">Price ▽</h2>
+            <h2 className="card-product__title filter__title">Price ▽</h2>
             <div className="filter-form__box">
                 <label className='filter-form__label' htmlFor="form">From</label>
                 <input className='form-home__input filter__input' type="text" id='form' {...register('form')} />

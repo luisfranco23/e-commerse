@@ -115,6 +115,18 @@
     border: 1px solid blue;
     transition: border ease-in-out;
 }
+.recomen {
+    background-color: rgb(247, 244, 244);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 4px 0px #797070;
+    font-style: italic;
+    font-size: 0.8rem;
+    color: gray;
+}
+.recomen > span {
+    font-weight: 600;
+}
 
 
 .createExito {

@@ -1,10 +1,11 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Link, NavLink } from 'react-router-dom'
 import './headerScreen.css'
 
 const HeaderScreen = () => {
 
     const navbar = useRef()
+    const [isBoolean, setIsBoolean] = useState(true)
 
     const clickMenuHan = () =>{
         navbar.current.classList.toggle('navbar-open')
@@ -20,7 +21,7 @@ const HeaderScreen = () => {
       </div>
       <nav ref={navbar} className="navbar">
         <ul className="navbar__list">
-          <li className="navbar__items">
+          <li onClick={clickMenuHan} className="navbar__items">
             <NavLink to="/login" className={({isActive}) => isActive ? 'navbar__link navbar__link-active' : 'navbar__link'}>   
                 <i className="bx bxs-user-circle"></i>
                 <p className="navbar__text">Login</p>
@@ -28,13 +29,13 @@ const HeaderScreen = () => {
             </NavLink>
           </li>
           <li className="navbar__items">
-            <NavLink to="/purchases" className={({isActive}) => isActive ? 'navbar__link navbar__link-active' : 'navbar__link'}>
+            <NavLink to="/purchases" onClick={clickMenuHan} className={({isActive}) => isActive ? 'navbar__link navbar__link-active' : 'navbar__link'}>
             <i className='bx bxs-store-alt'></i>
             <p className="navbar__text">Pucharses</p>
             </NavLink>
           </li>
           <li className="navbar__items">
-            <NavLink to="/cart" className={({isActive}) => isActive ? 'navbar__link navbar__link-active' : 'navbar__link'}>
+            <NavLink to="/cart" onClick={clickMenuHan} className={({isActive}) => isActive ? 'navbar__link navbar__link-active' : 'navbar__link'}>
                 <i className='bx bxs-cart'></i>
                 <p className="navbar__text">Cart</p>
             </NavLink>

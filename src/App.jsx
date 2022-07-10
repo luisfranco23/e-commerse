@@ -27,13 +27,16 @@ function App() {
     const URL = 'https://ecommerce-api-react.herokuapp.com/api/v1/users'
 
     axios.post(URL, newUser)
-      .then(res => console.log(res.data))
-      .catch(err => console.log(err.data))
-      .finally(() => {
+      .then(res => {
+        console.log(res.data)
         setIsCreateUser(true)
         setTimeout(() => {
             setIsCreateUser(false)
-        }, 5000);
+        }, 3000);
+      })
+      .catch(err => console.log(err.data))
+      .finally(() => {
+
       })
   },[newUser])
 
